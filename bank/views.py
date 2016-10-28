@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView
-
 from bank.models import Transaction
+
 from django.urls import reverse_lazy
 
 class IndexView(TemplateView):
