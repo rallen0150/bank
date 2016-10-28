@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Welcome</h1>
-  
+  <h1>Welcome {{ request.user }}</h1>
+    <br>
+    <br>
+    {% if request.user.is_authenticated %}
+      <h2><a href="{% url 'balance_create_view' %}">Calculate Balance</a></h2>
+    {% endif %}
 {% endblock %}

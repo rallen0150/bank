@@ -15,6 +15,7 @@ class Transaction(models.Model):
     operator1 = models.CharField(max_length=1, choices=OPTION)
     operator2 = models.CharField(max_length=1, null=True, blank=True, choices=OPTION)
     operator3 = models.CharField(max_length=1, null=True, blank=True, choices=OPTION)
+    created = models.DateTimeField(auto_now_add=True)
 
     @property
     def calc_total(self):
@@ -40,17 +41,17 @@ class Transaction(models.Model):
         else:
             if operator2 == '-':
                 if operator3 == '-':
-                    return round(num1 + num2 - num3, 2)
-                elif operator3 == '+':
-                    return round(num1 + num2 + num3, 2)
-                else:
-                    return round(num1 + num2, 2)
-            elif operator2 == '+':
-                if operator3 == '-':
                     return round(num1 - num2 - num3, 2)
                 elif operator3 == '+':
                     return round(num1 - num2 + num3, 2)
                 else:
                     return round(num1 - num2, 2)
+            elif operator2 == '+':
+                if operator3 == '-':
+                    return round(num1 + num2 - num3, 2)
+                elif operator3 == '+':
+                    return round(num1 + num2 + num3, 2)
+                else:
+                    return round(num1 + num2, 2)
             else:
                 return round(num1, 2)

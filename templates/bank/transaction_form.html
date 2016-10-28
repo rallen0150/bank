@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <a href="{% url 'index_view' %}">Back</a>
+{% if request.user.is_authenticated %}
   <form class="" action="" method="post">
     {% csrf_token %}
     <select class="" name="operator1">
@@ -11,8 +11,8 @@
       <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction 1"> <br>
       <select class="" name="operator2">
           <option value="">--------</option>
-          <option value="-">Depost</option>
-          <option value="+">Withdraw</option>
+          <option value="+">Depost</option>
+          <option value="-">Withdraw</option>
       </select>
       <input type="number" name="num2" step=".01" min="0" value="" placeholder="Transaction 2(optional)"> <br>
       <select class="" name="operator3">
@@ -25,5 +25,5 @@
   </form>
 
   {{ transaction.last.calc_total }}
-
+{% endif %}
 {% endblock %}
