@@ -23,34 +23,34 @@ class Transaction(models.Model):
         if operator1 == '-':
             if operator2 == '-':
                 if operator3 == '-':
-                    return num1 - num2 - num3
+                    return round(-num1 - num2 - num3, 2)
                 elif operator3 == '+':
-                    return num1 - num2 + num3
+                    return round(-num1 - num2 + num3, 2)
                 else:
-                    return num1 - num2
+                    return round(-num1 - num2, 2)
             elif operator2 == '+':
                 if operator3 == '-':
-                    return num1 + num2 - num3
+                    return round(-num1 + num2 - num3, 2)
                 elif operator3 == '+':
-                    return num1 + num2 + num3
+                    return round(-num1 + num2 + num3, 2)
                 else:
-                    return num1 + num2
+                    return round(-num1 + num2, 2)
             else:
-                return num1
+                return round(-num1, 2)
         else:
             if operator2 == '-':
                 if operator3 == '-':
-                    return num1 + num2 - num3
+                    return round(num1 + num2 - num3, 2)
                 elif operator3 == '+':
-                    return num1 + num2 + num3
+                    return round(num1 + num2 + num3, 2)
                 else:
-                    return num1 + num2
+                    return round(num1 + num2, 2)
             elif operator2 == '+':
                 if operator3 == '-':
-                    return num1 - num2 - num3
+                    return round(num1 - num2 - num3, 2)
                 elif operator3 == '+':
-                    return num1 - num2 + num3
+                    return round(num1 - num2 + num3, 2)
                 else:
-                    return num1 - num2
+                    return round(num1 - num2, 2)
             else:
-                return num1
+                return round(num1, 2)

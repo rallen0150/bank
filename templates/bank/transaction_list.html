@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3>Welcome back {{ request.user }}</h3>
+
+  <div class="profile_info">
+    {% for account in accounts %}
+      {% if request.user == account.user %}
+          <b>{{ account.calc_total }}</b> <br>
+           By: {{ account.user }}<br> <hr>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from bank.views import IndexView, UserCreateView, BalanceCreateView
+from bank.views import IndexView, UserCreateView, BalanceCreateView, TransactionDetailView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name="index_view"),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
     url(r'^balance/create/$', BalanceCreateView.as_view(), name="balance_create_view"),
+    url(r'^account/(?P<pk>\d+)/$', TransactionDetailView.as_view(), name="transaction_detail_view"),
 ]

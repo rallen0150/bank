@@ -15,6 +15,7 @@
           <a href="{% url 'login' %}">Login</a>
         {% else %}
           <a href="{% url 'balance_create_view' %}">Calculate Balance</a>
+          <a href="{% url 'transaction_detail_view' user.id %}">Profile</a>
           <a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout</a>
         {% endif %}
           {% block content %}

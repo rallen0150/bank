@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView
 
 from bank.models import Transaction
@@ -29,3 +29,11 @@ class BalanceCreateView(CreateView):
         instance = form.save(commit=False)
         instance.user = self.request.user
         return super().form_valid(form)
+
+class TransactionDetailView(ListView):
+    model = Transaction
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['accounts'] = Transaction.objects.all()
+        return context
