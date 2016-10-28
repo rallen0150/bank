@@ -4,13 +4,13 @@ from django.contrib import admin
 from bank.views import IndexView, UserCreateView, BalanceCreateView, TransactionDetailView
 from bank_api.views import BalanceListCreateAPIView, BalanceDetailUpdateDestroyAPIView
 
-# from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^$', IndexView.as_view(), name="index_view"),
-    # url(r'^obtain-token/$', obtain_auth_token),
+    url(r'^obtain-token/$', obtain_auth_token),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
     url(r'^balance/create/$', BalanceCreateView.as_view(), name="balance_create_view"),
     url(r'^account/(?P<pk>\d+)/$', TransactionDetailView.as_view(), name="transaction_detail_view"),

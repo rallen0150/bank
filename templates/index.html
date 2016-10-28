@@ -14,7 +14,7 @@
           <div class="panel-body">
             <form class="" action="{% url 'login' %}" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ login.as_p }}
                 <input type="submit" name="" value="Login!">
             </form>
           </div>
@@ -25,5 +25,6 @@
     {% endif %}
     {% if request.user.is_authenticated %}
       <h2><a href="{% url 'balance_create_view' %}">Calculate Balance</a></h2>
+      <h2><a href="{% url 'balance_list_create_api_view' %}">View the API</a></h2>
     {% endif %}
 {% endblock %}
