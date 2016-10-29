@@ -5,4 +5,5 @@ from bank.models import Transaction
 class BalanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
-        fields='__all__'
+        fields=('id', 'num1', 'operator1', 'created')
+        # exclude = ('user')
