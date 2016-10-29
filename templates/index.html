@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Welcome {{ request.user }}</h1>
-    <br>
-    <br>
+  <h1>Welcome Back <b>{{ request.user }}</b> to the...</h1><br>
+  <img class="center" src="/static/fonts/got_font.png" alt="Iron Bank" />
+  <br><br>
     {% if not request.user.is_authenticated %}
     <div class="row">
       <div class="col-md-8">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
           <div class="panel-heading">
               <h3>Login</h3>
           </div>
@@ -24,7 +24,27 @@
 
     {% endif %}
     {% if request.user.is_authenticated %}
-      <h2><a href="{% url 'balance_create_view' %}">Calculate Balance</a></h2>
-      <h2><a href="{% url 'balance_list_create_api_view' %}">View the API</a></h2>
-    {% endif %}
+    <div class="row-1">
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4>Find Your Balance!</h4>
+          </div>
+          <div class="panel-body">
+            <h2><a href="{% url 'balance_create_view' %}">Calculate Balance</a></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4>Look at the API's!</h4>
+          </div>
+          <div class="panel-body">
+            <h2><a href="{% url 'balance_list_create_api_view' %}">View the API</a></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

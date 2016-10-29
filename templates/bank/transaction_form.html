@@ -1,17 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
+<br>
 {% if request.user.is_authenticated %}
-  <form class="" action="" method="post">
-    {% csrf_token %}
-    <select class="" name="operator1">
-        <option value="D">Depost</option>
-        <option value="W">Withdraw</option>
-    </select>
-      <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction">  <br>
-      <input type="submit" name="" value="Calculate!">
-  </form>
+<div class="panel panel-info">
+  <div class="panel-heading">
+      <h3>Transaction</h3>
+  </div>
+  <div class="panel-body">
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      <select class="" name="operator1">
+          <option value="D">Depost</option>
+          <option value="W">Withdraw</option>
+      </select>
+        <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction"><br><br>
+        <input type="submit" name="" value="Calculate!">
+    </form>
+  </div>
+  <div class="panel-footer">
+    <h4>Last Transaction: ${{ transaction.last.num1|floatformat:2 }} - {{ transaction.last.get_operator1_display }}</h4>
+  </div>
+</div>
 
-  {{ transaction.last.calc_total }}
 {% endif %}
 {% endblock %}

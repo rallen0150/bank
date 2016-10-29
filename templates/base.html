@@ -6,19 +6,76 @@
     <title>Iron Bank</title>
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen" title="no title">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <style media="screen">
+      h1{
+        text-align: center;
+      }
+      .col-md-5 {
+        position: fixed;
+      }
+      .col-md-7 {
+        float: right;
+      }
+      img.center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      body {
+        background-color: #d4d7d9;
+      }
+      .panel-body {
+        background-color: #f5f5f5;
+      }
+      a:hover {
+        color: black;
+      }
+      nav {
+        color: white;
+      }
+      .nav_font {
+        color: white;
+      }
+      .navbar-custom {
+        background-color: #C88A65;
+      }
+      .dropdown-toggle {
+        color: white;
+      }
+
+    </style>
   </head>
   <body>
-      <div class="container">
-        {% if not request.user.is_authenticated %}
-          <a href="{% url 'user_create_view' %}">New User</a> |
-          <a href="{% url 'login' %}">Login</a>
-        {% else %}
+    <nav class="nav navbar-custom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <h2><img class="nav_font" src="/static/fonts/small_got.png" alt="Iron Bank" /></h2>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigate<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'index_view' %}">Home</a></li>
+              {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'user_create_view' %}">New User</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+              {% else %}
+                <li><a href="{% url 'balance_create_view' %}">Calculate Balance</a></li>
+                <li><a href="{% url 'transaction_detail_view' user.id %}">Transaction Report</a></li>
+                <li><a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout</a></li>
+              {% endif %}
+            </ul>
+          </li>
 
-          <a href="{% url 'transaction_detail_view' user.id %}">Profile</a> |
-          <a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout</a> |
-          <a href="{% url 'index_view' %}">Home</a>
-        {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+      <div class="container">
+
           {% block content %}
 
           {% endblock %}
