@@ -4,38 +4,44 @@
 <br>
 <br>
 {% if request.user.is_authenticated %}
-<div class="panel panel-info">
-  <div class="panel-heading">
-      <h3>Transaction</h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <h3>Transaction</h3>
+      </div>
+      <div class="panel-body">
+        <form class="" action="" method="post">
+          {% csrf_token %}
+            <select class="" name="operator1">
+                <option value="D">Depost</option>
+                <option value="W">Withdraw</option>
+            </select>
+            <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction"><br><br>
+            <input type="submit" name="" value="Calculate!">
+        </form>
+      </div>
+      <div class="panel-footer">
+        <h4>Last Transaction: ${{ transaction.last.num1|floatformat:2 }} - {{ transaction.last.get_operator1_display }}</h4>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <form class="" action="" method="post">
-      {% csrf_token %}
-        <select class="" name="operator1">
-            <option value="D">Depost</option>
-            <option value="W">Withdraw</option>
-        </select>
-        <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction"><br><br>
-        <input type="submit" name="" value="Calculate!">
-    </form>
-  </div>
-  <div class="panel-footer">
-    <h4>Last Transaction: ${{ transaction.last.num1|floatformat:2 }} - {{ transaction.last.get_operator1_display }}</h4>
-  </div>
-</div>
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3>Transfer</h3>
-  </div>
-  <div class="panel-body">
-    <form class="" action="{%  url 'transfer_create_view' %}" method="post">
-      {% csrf_token %}
-      <input type="number" name="user" value="" min='1' placeholder="User ID #">
-      <input type="number" step=".01" min="0" name="num1" value="" placeholder="Transfer Amount">
-      <input type="submit" name="" value="Submit">
-    </form>
-  </div>
-</div>
 
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3>Transfer</h3>
+      </div>
+      <div class="panel-body">
+        <form class="" action="{%  url 'transfer_create_view' %}" method="post">
+          {% csrf_token %}
+          <input type="number" name="user" value="" min='1' placeholder="User ID #">
+          <input type="number" step=".01" min="0" name="num1" value="" placeholder="Transfer Amount">
+          <input type="submit" name="" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endif %}
 {% endblock %}
