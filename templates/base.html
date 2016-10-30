@@ -61,7 +61,7 @@
                   <li><a href="{% url 'index_view' %}">Home</a></li>
                 {% if not request.user.is_authenticated %}
                 {% else %}
-                  <li><a href="{% url 'balance_create_view' %}">Calculate Balance</a></li>
+                  <li><a href="{% url 'balance_create_view' %}">Calculate/Transfer Balance</a></li>
                   <li><a href="{% url 'transaction_detail_view' user.id %}">Transaction Report</a></li>
                   <li><a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout</a></li>
                 {% endif %}
