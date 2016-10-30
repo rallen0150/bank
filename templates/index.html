@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if not request.user.is_authenticated %}
+  <h1>Plese Login/Sign Up at the</h1>
+{% else %}
   <h1>Welcome Back <b>{{ request.user }}</b> to the...</h1><br>
+{% endif %}
   <img class="center" src="/static/fonts/got_font.png" alt="Iron Bank" />
   <br><br>
     {% if not request.user.is_authenticated %}

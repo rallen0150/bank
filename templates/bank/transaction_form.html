@@ -22,7 +22,7 @@
         </form>
       </div>
       <div class="panel-footer">
-        <h4>Last Transaction: ${{ transaction.last.num1|floatformat:2 }} - {{ transaction.last.get_operator1_display }}</h4>
+        <h4>Last Transaction: {{ transaction.last.user }}, ${{ transaction.last.num1|floatformat:2 }} - {{ transaction.last.get_operator1_display }}</h4>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView
 from bank.models import Transaction, Profile
+from bank.forms import TransferForm
 
 from django.urls import reverse_lazy
 
@@ -51,5 +52,10 @@ class TransferCreateView(CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.operator1 = "D"
+        x = Profile.objects.get(id=instance.user.id)
+        if not x:
+            instance.user = self.request.user.user
+        
+
         Transaction.objects.create(operator1='W', num1=instance.num1, user=self.request.user)
         return super().form_valid(form)
