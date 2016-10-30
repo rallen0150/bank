@@ -42,3 +42,14 @@ class TransactionDetailView(ListView):
         context = super().get_context_data(**kwargs)
         context['accounts'] = Transaction.objects.all()
         return context
+
+class TransferCreateView(CreateView):
+    model = Transaction
+    fields = ("user", "num1")
+    success_url = reverse_lazy('balance_create_view')
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.operator1 = "D"
+        Transaction.objects.create(operator1='W', num1=instance.num1, user=self.request.user)
+        return super().form_valid(form)
