@@ -45,6 +45,12 @@
       .dropdown-toggle {
         color: white;
       }
+      .glyphicon {
+        color: black;
+      }
+      .logo {
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -70,8 +76,8 @@
           </ul>
           {% if not request.user.is_authenticated %}
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'user_create_view' %}"><span class="glyphicon glyphicon-user"></span> New User</a></li>
-            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a class="logo" href="{% url 'user_create_view' %}"><span class="glyphicon glyphicon-user"></span> New User</a></li>
+            <li><a class="logo" href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
           {% endif %}
       </div>
