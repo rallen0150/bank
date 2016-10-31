@@ -15,7 +15,9 @@
           {% csrf_token %}
             <select class="" name="operator1">
                 <option value="D">Depost</option>
+                {% if request.user.profile.balance > 0 %}
                 <option value="W">Withdraw</option>
+                {% endif %}
             </select>
             <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction"><br><br>
             <input type="submit" name="" value="Calculate!">
