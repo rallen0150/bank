@@ -27,7 +27,7 @@ class BalanceCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["transaction"] = Transaction.objects.all()
+        context["transaction"] = Transaction.objects.filter(user=self.request.user)
         return context
 
     def form_valid(self, form):
@@ -40,7 +40,7 @@ class TransactionDetailView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['accounts'] = Transaction.objects.all()
+        context["accounts"] = Transaction.objects.filter(user=self.request.user)
         return context
 
 class TransferCreateView(CreateView):
