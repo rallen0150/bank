@@ -8,7 +8,7 @@
   <div class="col-md-6">
     <div class="panel panel-info">
       <div class="panel-heading">
-          <h3>Transaction</h3>
+          <h3 id="under">Transaction</h3>
       </div>
       <div class="panel-body">
         <form class="" action="" method="post">
@@ -19,12 +19,12 @@
                 <option value="W">Withdraw</option>
                 {% endif %}
             </select>
-            <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction"><br><br>
-            <input type="submit" name="" value="Calculate!">
+            <input type="number" step=".01" name="num1" min="0" value="" placeholder="Transaction ($)">
+            <button id="log" type="submit" class="btn btn-success">Transaction!</button>
         </form>
       </div>
       <div class="panel-footer">
-        <h4>Last Transaction: {{ transaction.last.user }}, ${{ transaction.last.num1|floatformat:2 }} - {{ transaction.last.get_operator1_display }}</h4>
+        <h4>Last Transaction: {{ transaction.last.get_operator1_display }}</h4>
       </div>
     </div>
   </div>
@@ -32,14 +32,14 @@
   <div class="col-md-6">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3>Transfer</h3>
+        <h3 id="under">Transfer</h3>
       </div>
       <div class="panel-body">
         <form class="" action="{%  url 'transfer_create_view' %}" method="post">
           {% csrf_token %}
-          <input type="number" name="user" value="" min='1' placeholder="User ID #">
-          <input type="number" step=".01" min="0" name="num1" value="" placeholder="Transfer Amount">
-          <input type="submit" name="" value="Submit">
+          <input type="number" name="user" value="" min='1' placeholder="Other User ID #">
+          <input type="number" step=".01" min="0" name="num1" value="" placeholder="Transfer Amount ($)">
+          <button id="log" type="submit" class="btn btn-success">Transfer!</button>
         </form>
       </div>
     </div>

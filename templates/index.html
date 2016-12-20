@@ -33,6 +33,9 @@
               <button id="log" type="submit" class="btn btn-success btn-block">Login!</button>
             </form>
           </div>
+          <div class="panel-footer">
+            Not Already a User? <a href="{% url 'user_create_view' %}">Sign Up Here!</a>
+          </div>
         </div>
       </div>
     </div>
@@ -43,20 +46,20 @@
       <div class="col-md-6">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h4>Find Your Balance!</h4>
+            <h4 id="under">Find Your Balance!</h4>
           </div>
           <div class="panel-body">
-            <h2><a href="{% url 'balance_create_view' %}">Calculate/Transfer Balance</a></h2>
+            <h2 id="center"><span class="fa fa-calculator"></span> <a href="{% url 'balance_create_view' %}">Calculate/Transfer Balance</a></h2>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h4>Look at the API's!</h4>
+            <h4 id="under">Look at the API's!</h4>
           </div>
           <div class="panel-body">
-            <h2><a href="{% url 'balance_list_create_api_view' %}">View the API</a></h2>
+            <h2 id="center"><a href="{% url 'balance_list_create_api_view' %}">View the API</a></h2>
           </div>
         </div>
       </div>

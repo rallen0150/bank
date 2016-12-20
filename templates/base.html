@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen" title="no title">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style media="screen">
       h1{
@@ -58,6 +59,13 @@
         text-decoration: underline;
         text-align: center;
       }
+      #center {
+        text-align: center;
+      }
+      .name {
+        color: black;
+        padding-right: 25px;
+      }
     </style>
   </head>
   <body>
@@ -71,21 +79,23 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigate<span class="caret"></span></a>
 
               <ul class="dropdown-menu">
-                  <li><a href="{% url 'index_view' %}">Home</a></li>
+                  <li><a href="{% url 'index_view' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 {% if not request.user.is_authenticated %}
                 {% else %}
-                  <li><a href="{% url 'balance_create_view' %}">Calculate/Transfer Balance</a></li>
-                  <li><a href="{% url 'transaction_detail_view' user.id %}">Transaction Report</a></li>
-                  <li><a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout</a></li>
+                  <li><a href="{% url 'balance_create_view' %}"><span class="fa fa-money"></span> Calculate/Transfer Balance</a></li>
+                  <li><a href="{% url 'transaction_detail_view' user.id %}"><span class="fa fa-bar-chart"></span> Transaction Report</a></li>
+                  <li><a href="{% url 'logout' %}?next={% url 'index_view' %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
                 {% endif %}
               </ul>
             </li>
           </ul>
           {% if not request.user.is_authenticated %}
-          <ul class="nav navbar-nav navbar-right">
-            <li><a class="logo" href="{% url 'user_create_view' %}"><span class="glyphicon glyphicon-user"></span> New User</a></li>
-            <li><a class="logo" href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a class="logo" href="{% url 'user_create_view' %}"><span class="glyphicon glyphicon-user"></span> New User</a></li>
+              <li><a class="logo" href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          {% else %}
+            <ul class="nav navbar-nav navbar-right"><h4 class="name">Signed in as <b id="under">{{ request.user }}</b></h4></ul>
           {% endif %}
       </div>
     </nav>

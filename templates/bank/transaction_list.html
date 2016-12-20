@@ -8,10 +8,10 @@
     <div class="col-md-4">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3>Remaining Balance</h3>
+          <h3 id="under">Remaining Balance</h3>
         </div>
         <div class="panel-body">
-          <h2><b>${{ request.user.profile.balance|floatformat:2 }}</b></h2>
+          <h2 id="center"><b>${{ request.user.profile.balance|floatformat:2 }}</b></h2>
         </div>
       </div>
     </div>
@@ -21,10 +21,10 @@
           <div class="col-md-7">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h2><b>{{ account.get_operator1_display }}</b></h2>
+                <h2 id="under"><b>{{ account.get_operator1_display }}</b></h2>
               </div>
               <div class="panel-body">
-                <h4>Transaction: <b>${{ account.num1|floatformat:2 }}</b></h4>
+                <h4 id="center">Transaction: <b>${{ account.num1|floatformat:2 }}</b></h4>
               </div>
               <div class="panel-footer">
                 Transaction Date and Time:  {{ account.created }}
