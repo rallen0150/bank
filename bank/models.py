@@ -27,6 +27,9 @@ class Transaction(models.Model):
     operator1 = models.CharField(max_length=1, choices=OPTION)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ("-created", )
+
 @receiver(post_save, sender=User)
 def create(**kwargs):
     created = kwargs['created']
