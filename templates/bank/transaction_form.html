@@ -3,9 +3,10 @@
 {% block content %}
 <br>
 <br>
+<br><br>
 {% if request.user.is_authenticated %}
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-info">
       <div class="panel-heading">
           <h3 id="under">Transaction</h3>
@@ -23,13 +24,11 @@
             <button id="log" type="submit" class="btn btn-success">Transaction!</button>
         </form>
       </div>
-      <div class="panel-footer">
-        <h4>Last Transaction: {{ transaction.last.get_operator1_display }}</h4>
-      </div>
     </div>
   </div>
-
-  <div class="col-md-6">
+</div><br><br><br><br>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 id="under">Transfer</h3>
