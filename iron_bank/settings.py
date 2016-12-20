@@ -25,7 +25,7 @@ SECRET_KEY = '5#+5r4g!$=lz1z1@!mmf__6ea#_*hr@&z*r8bziy#5!%n7c-dp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rallen-ironbank.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'iron_bank.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+import dj_database_url
 
 DATABASES = {
     'default': {
@@ -84,6 +85,9 @@ DATABASES = {
     }
 }
 
+database_config = dj_database_url.config()
+if database_config:
+    DATABASES['default'] = database_config
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -123,6 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

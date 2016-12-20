@@ -1,0 +1,7 @@
+psycopg2
+django
+requests
+gunicorn
+dj-database-url
+djangorestframework
+whitenoise
