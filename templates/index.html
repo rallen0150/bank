@@ -4,22 +4,33 @@
 {% if not request.user.is_authenticated %}
   <h1>Plese Login/Sign Up at the</h1>
 {% else %}
-  <h1>Welcome Back <b>{{ request.user }}</b> to the...</h1><br>
+  <h1>Welcome Back <b id="under">{{ request.user }}</b> to the...</h1><br>
 {% endif %}
   <img class="center" src="/static/fonts/got_font.png" alt="Iron Bank" />
   <br><br>
     {% if not request.user.is_authenticated %}
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-info">
           <div class="panel-heading">
-              <h3>Login</h3>
+              <h3 id="under">Login</h3>
           </div>
           <div class="panel-body">
             <form class="" action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                {{ login.as_p }}
-                <input type="submit" name="" value="Login!">
+              {% csrf_token %}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-user"></span>
+                  <input type="text" name="username" placeholder="Username"><br>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-lock"></span>
+                  <input type="password" name="password" placeholder="Password"><br>
+                </div>
+              </div>
+              <button id="log" type="submit" class="btn btn-success btn-block">Login!</button>
             </form>
           </div>
         </div>

@@ -5,7 +5,7 @@
   <h1><b>{{ request.user }}'s</b> Transactions Report</h1>
   <br>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3>Remaining Balance</h3>
@@ -15,11 +15,9 @@
         </div>
       </div>
     </div>
-  </div>
     {% for account in accounts %}
       {% if request.user == account.user %}
       <div class="profile_info">
-        <div class="row">
           <div class="col-md-7">
             <div class="panel panel-primary">
               <div class="panel-heading">
